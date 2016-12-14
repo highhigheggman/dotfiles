@@ -8,6 +8,7 @@ zplug 'zsh-users/zsh-completions' #Zshの候補選択を拡張する
 zplug "zsh-users/zsh-syntax-highlighting", nice:2 #プロンプトを色付け
 zplug "mollifier/cd-gitroot" #git root にcd
 
+#移動関連
 zplug "junegunn/fzf-bin", \
     as:command, \
         file:"fzf", \
