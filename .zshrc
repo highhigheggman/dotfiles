@@ -1,4 +1,30 @@
-# vi ~/.zshrc
+#.zshrc
+
+#zplug setting
+source ~/.zplug/init.zsh
+# (1) プラグインを定義する
+zplug 'zsh-users/zsh-autosuggestions' #入力中のコマンドをコマンド履歴から推測し、候補として表示する
+zplug 'zsh-users/zsh-completions' #Zshの候補選択を拡張する
+zplug "zsh-users/zsh-syntax-highlighting", nice:2 #プロンプトを色付け
+zplug "mollifier/cd-gitroot" #git root にcd
+
+zplug "junegunn/fzf-bin", \
+    as:command, \
+        file:"fzf", \
+            from:gh-r, \
+                | zplug "b4b4r07/enhancd", of:enhancd.sh
+
+# (2) インストールする
+if ! zplug check --verbose; then
+  printf 'Install? [y/N]: '
+    if read -q; then
+          echo; zplug install
+            fi
+            fi
+
+            zplug load
+
+
 # prompt
 #PS1="[@${HOST%%.*} %1~]%(!.#.$) "
 PS1="[${USER}@${HOST%%.*} %1~]%(!.#.$) " # Linux bashと同じ形式
@@ -24,7 +50,6 @@ setopt correct # コマンドのスペルチェックを有効に
 # 続けて <Tab> を押すと候補からパス名を選択できるようになる
 # 候補を選ぶには <Tab> か Ctrl-N,B,F,P
 zstyle ':completion:*:default' menu select=1
-
 # less
 man() {
       env \
