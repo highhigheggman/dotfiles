@@ -5,15 +5,13 @@ source ~/.zplug/init.zsh
 # (1) プラグインを定義する
 zplug 'zsh-users/zsh-autosuggestions' #入力中のコマンドをコマンド履歴から推測し、候補として表示する
 zplug 'zsh-users/zsh-completions' #Zshの候補選択を拡張する
-zplug "zsh-users/zsh-syntax-highlighting", nice:2 #プロンプトを色付け
+zplug "zsh-users/zsh-syntax-highlighting", defer:2 #プロンプトを色付け
 zplug "mollifier/cd-gitroot" #git root にcd
 
 #移動関連
-zplug "junegunn/fzf-bin", \
-    as:command, \
-        file:"fzf", \
-            from:gh-r, \
-                | zplug "b4b4r07/enhancd", of:enhancd.sh
+zplug "peco/peco", as:command, from:gh-r
+zplug "b4b4r07/enhancd", use:init.sh
+ENHANCD_FILTER=peco; export ENHANCD_FILTER
 
 # (2) インストールする
 if ! zplug check --verbose; then
