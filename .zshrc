@@ -11,7 +11,6 @@ zplug "mollifier/cd-gitroot" #git root にcd
 #移動関連
 zplug "peco/peco", as:command, from:gh-r
 zplug "b4b4r07/enhancd", use:init.sh
-ENHANCD_FILTER=peco; export ENHANCD_FILTER
 
 # (2) インストールする
 if ! zplug check --verbose; then
