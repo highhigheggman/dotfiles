@@ -90,8 +90,6 @@ set smartcase
 set hlsearch
 " 暗い背景色に合わせた配色にする
 set background=dark
-" タブ入力を複数の空白入力に置き換える
-set expandtab
 " 検索ワードの最初の文字を入力した時点で検索を開始する
 set incsearch
 " 保存されていないファイルがあるときでも別のファイルを開けるようにする
@@ -109,11 +107,15 @@ set autoindent
 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smartindent
 " タブ文字の表示幅
-set tabstop=2
+set tabstop=4
 " Vimが挿入するインデントの幅
-set shiftwidth=2
+set shiftwidth=4
+" キーボードで<Tab>キーを押した時に挿入される空白の量
+set softtabstop=4
 " 行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする
 set smarttab
+" タブ入力を複数の空白入力に置き換える
+set expandtab
 " カーソルを行頭、行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
 " 構文毎に文字色を変化させる
@@ -216,14 +218,6 @@ if has("autocmd")
     \   exe "normal! g'\"" |
     \ endif
 endif
-""""""""""""""""""""""""""""""
-" 自動的に閉じ括弧を入力
-""""""""""""""""""""""""""""""
-inoremap { {}<Left>
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap ( ()<ESC>i
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
-
 autocmd BufRead,BufNewFile *.py setfiletype python
 " filetypeの自動検出(最後の方に書いた方がいいらしい)
 filetype on
